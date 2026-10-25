@@ -1,6 +1,6 @@
 # Main chapter data
-./chapitre-?
-!./chapitre-?/*.csx
+chapitre-?/*
+!chapitre-?/*.csx
 
 # Common stuff
 assets/
