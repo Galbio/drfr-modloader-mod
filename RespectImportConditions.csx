@@ -12,8 +12,7 @@ bool RespectSpriteImportCond(string assetname)
 	if (trySprite == null)
 		return (false);
 
-	bool res = (trySprite.Textures.Count > frame);
-	return (res);
+	return (trySprite.Textures.Count > frame);
 }
 
 readonly string SoundFRSuffix = "_fr";
