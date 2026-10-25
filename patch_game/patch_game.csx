@@ -18,8 +18,32 @@ foreach (UndertaleString str in Data.Strings) {
     }
 }
 
-FontPatcher.importFontList(FetchAssets("Fonts", currentChapter));
-AudioPatcher.importSoundList(FetchAssets("Sounds", currentChapter));
-TilesetPatcher.importTilesetList(FetchAssets("Textures/Tilesets", currentChapter));
-SpritePatcher.importSpriteList(FetchAssets("Textures/Sprites", currentChapter));
+List<string>fnt_list = FetchAssets("Fonts", currentChapter);
+if (!import_asset_type("IMPORT_JAFONTS")) {
+	for (int i = 0; i < fnt_list.Count; i++) {
+		string fnt_name = fnt_list[i];
+
+		if (!fnt_name.Contains("fnt_ja_"))
+			continue;
+
+		fnt_list.RemoveAt(i--);
+	}
+}
+FontPatcher.importFontList(fnt_list);
+
+if (import_asset_type("IMPORT_SOUNDS"))
+	AudioPatcher.importSoundList(FetchAssets("Sounds", currentChapter));
+
+if (import_asset_type("IMPORT_TEXTURES")) {
+	TilesetPatcher.importTilesetList(FetchAssets("Textures/Tilesets", currentChapter));
+	SpritePatcher.importSpriteList(FetchAssets("Textures/Sprites", currentChapter));
+}
+
 Console.WriteLine("\n");
+
+bool import_asset_type(string key)
+{
+	string val = Environment.GetEnvironmentVariable(key);
+
+	return (val != "0");
+}
