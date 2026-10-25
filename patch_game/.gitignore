@@ -1,0 +1,7 @@
+# Main chapter data
+./chapitre-?
+!./chapitre-?/*.csx
+
+# Common stuff
+assets/
+common-scripts/
