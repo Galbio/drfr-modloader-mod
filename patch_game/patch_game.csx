@@ -1,3 +1,5 @@
+using System.Collections;
+
 string fr_file = "strings_fr.txt";
 string en_file = "strings_en.txt";
 string file_dir = $"chapitre-{currentChapter}";
